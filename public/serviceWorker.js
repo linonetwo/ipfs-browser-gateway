@@ -11,9 +11,7 @@ importScripts('./resolver.js');
     those who use module.exports use ./require.js polyfill
 */
 const fileType = require('https://unpkg.com/file-type@7.7.1/index.js');
-const readableStream = require('http://localhost:5000/readable-stream.js');
-const pullStream = require('http://localhost:5000/pull-stream.js');
-const streamToPullStream = require('http://localhost:5000/stream-to-pull-stream.js');
+const readableStreamNodeToWeb = require('http://localhost:5000/readable-stream-node-to-web.js');
 const mimeTypes = require('http://localhost:5000/mime-types.js');
 
 const ipfsRoute = `ipfs`;
@@ -142,14 +140,14 @@ async function getFile(path) {
           if (mimeType) {
             console.log(`returning stream with ${mimeType}`);
             resolve(
-              new Response(stream, {
+              new Response(readableStreamNodeToWeb(stream), {
                 ...headerOK,
                 headers: { 'Content-Type': mimeTypes.contentType(mimeType) },
               }),
             );
           } else {
             console.log('return stream without mimeType');
-            resolve(new Response(stream, headerOK));
+            resolve(new Response(readableStreamNodeToWeb(stream), headerOK));
           }
         });
       });
