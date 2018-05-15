@@ -2,7 +2,7 @@
 /* global importScripts, self, Response, Ipfs, resolveDirectory, resolveMultihash, joinURLParts, removeTrailingSlash */
 
 // inject Ipfs to global
-import fileType from 'file-types';
+import fileType from 'file-type';
 import readableStreamNodeToWeb from 'readable-stream-node-to-web';
 import mimeTypes from 'mime-types';
 import nodeStream from 'stream';
