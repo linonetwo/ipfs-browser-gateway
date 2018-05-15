@@ -8,7 +8,6 @@
     "file-type": "^8.0.0",
     "filesize": "^3.6.1",
     "history": "^4.7.2",
-    "ipfs": "^0.28.2",
     "ipfs-unixfs": "^0.1.14",
     "mime-types": "^2.1.18",
     "multihashes": "^0.4.13",
