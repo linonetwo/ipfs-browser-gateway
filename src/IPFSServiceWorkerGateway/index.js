@@ -2,18 +2,19 @@
 /* global importScripts, self, Response, Ipfs, resolveDirectory, resolveMultihash, joinURLParts, removeTrailingSlash */
 
 // inject Ipfs to global
+import fileType from 'file-types';
+import readableStreamNodeToWeb from 'readable-stream-node-to-web';
+import mimeTypes from 'mime-types';
+import nodeStream from 'stream';
+
 importScripts('https://cdn.jsdelivr.net/npm/ipfs/dist/index.js');
+
 // inject utils and resolvers to global
-importScripts('./require.js');
 importScripts('./pathUtil.js');
 importScripts('./resolver.js');
 /* inject dependencies to global
     those who use module.exports use ./require.js polyfill
 */
-const fileType = require('https://unpkg.com/file-type@7.7.1/index.js');
-const readableStreamNodeToWeb = require('https://wzrd.in/standalone/readable-stream-node-to-web.js');
-const mimeTypes = require('https://wzrd.in/standalone/mime-types.js');
-const nodeStream = require('https://wzrd.in/standalone/stream.js');
 
 const ipfsRoute = `ipfs`;
 

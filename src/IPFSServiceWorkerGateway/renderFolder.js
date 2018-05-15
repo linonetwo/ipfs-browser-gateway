@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars, no-restricted-globals */
 /* global importScripts, mainStyle, joinURLParts, filesize, splitPath */
+import filesize from 'filesize';
 
 importScripts('./mainStyle.js');
-const filesize = require('https://unpkg.com/filesize@3.6.1/lib/filesize.js');
 
 function getParentDirectoryURL(originalParts) {
   const parts = originalParts.slice();

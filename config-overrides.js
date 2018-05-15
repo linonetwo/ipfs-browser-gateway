@@ -43,6 +43,8 @@ module.exports = function override(config, env) {
   config.module.rules.splice(1, 1);
   // rewire service-worker-webpack
   rewireServiceWorkerPlugin(config, 'src/IPFSServiceWorkerGateway/index.js');
+  console.log(config.plugins);
+  
 
   return config;
 };

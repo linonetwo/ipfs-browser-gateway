@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* global importScripts, Cids, Multihashes, IpfsUnixfs, promisify, splitPath, async, renderFolder */
-importScripts('https://unpkg.com/cids@0.5.3/dist/index.min.js');
-importScripts('https://unpkg.com/multihashes@0.4.13/dist/index.min.js');
-importScripts('https://npmcdn.com/ipfs-unixfs@0.1.14/dist/index.min.js');
-importScripts('https://unpkg.com/promisify-es6@1.0.3/index.min.js');
-importScripts('https://wzrd.in/standalone/async.js');
+import Cids from 'cids';
+import Multihashes from 'multihashes'
+import IpfsUnixfs from 'ipfs-unixfs';
+import promisify from 'promisify-es6';
+import async from 'async.js';
+
 importScripts('./renderFolder.js');
 
 const INDEX_HTML_FILES = ['index.html', 'index.htm', 'index.shtml'];
