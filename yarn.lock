@@ -439,10 +439,6 @@ async-limiter@~1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/async-limiter/download/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
 
-async.js@^0.9.5:
-  version "0.9.5"
-  resolved "http://registry.npm.taobao.org/async.js/download/async.js-0.9.5.tgz#c6d84c1bb842bd4398d7aec1d3a2882748d98c4e"
-
 async@^1.4.0, async@^1.4.2, async@^1.5.2:
   version "1.5.2"
   resolved "http://registry.npm.taobao.org/async/download/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"

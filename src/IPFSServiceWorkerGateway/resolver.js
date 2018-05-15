@@ -2,7 +2,7 @@ import Cids from 'cids';
 import Multihashes from 'multihashes';
 import IpfsUnixfs from 'ipfs-unixfs';
 import promisify from 'promisify-es6';
-import async from 'async.js';
+import async from 'async';
 
 import { splitPath } from './pathUtil';
 import renderFolder from './renderFolder';

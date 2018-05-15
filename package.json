@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "async.js": "^0.9.5",
+    "async": "^2.6.0",
     "cids": "^0.5.3",
     "file-type": "^8.0.0",
     "filesize": "^3.6.1",
