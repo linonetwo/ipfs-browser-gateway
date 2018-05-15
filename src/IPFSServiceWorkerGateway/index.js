@@ -1,20 +1,18 @@
-/* eslint-disable no-restricted-globals, import/no-unresolved */
-/* global importScripts, self, Response, Ipfs, resolveDirectory, resolveMultihash, joinURLParts, removeTrailingSlash */
+/* eslint-disable no-restricted-globals */
+/* global Ipfs */
 
-// inject Ipfs to global
+
 import fileType from 'file-type';
 import readableStreamNodeToWeb from 'readable-stream-node-to-web';
 import mimeTypes from 'mime-types';
 import nodeStream from 'stream';
 
+import { joinURLParts, removeTrailingSlash } from './pathUtil';
+import { resolveDirectory, resolveMultihash} from './resolver';
+
+// inject Ipfs to global
 importScripts('https://cdn.jsdelivr.net/npm/ipfs/dist/index.js');
 
-// inject utils and resolvers to global
-importScripts('./pathUtil.js');
-importScripts('./resolver.js');
-/* inject dependencies to global
-    those who use module.exports use ./require.js polyfill
-*/
 
 const ipfsRoute = `ipfs`;
 
@@ -90,7 +88,6 @@ function handleGatewayResolverError(ipfs, path, err) {
             console.error(error);
             return new Response(error.toString(), headerError);
           });
-        break;
       case errorToString.startsWith('Error: no link named'):
         return new Response(errorToString, headerNotFound);
       case errorToString.startsWith('Error: multihash length inconsistent'):
@@ -118,7 +115,7 @@ async function getFile(path) {
       ipfsStream.pipe(responseStream)
       console.log(`Getting stream ${ipfsStream}`);
 
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         ipfsStream.once('error', error => {
           if (error) {
             console.error(error);

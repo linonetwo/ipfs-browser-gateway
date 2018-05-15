@@ -1,8 +1,8 @@
-/* eslint-disable no-unused-vars, no-restricted-globals */
-/* global importScripts, mainStyle, joinURLParts, filesize, splitPath */
+/* eslint-disable no-restricted-globals */
 import filesize from 'filesize';
 
-importScripts('./mainStyle.js');
+import { joinURLParts, splitPath } from './pathUtil';
+import mainStyle from './mainStyle';
 
 function getParentDirectoryURL(originalParts) {
   const parts = originalParts.slice();
@@ -52,7 +52,7 @@ function buildTable(path, links) {
   `;
 }
 
-function renderFolder(path, links) {
+export default function renderFolder(path, links) {
   return `
     <!DOCTYPE html>
     <html>
