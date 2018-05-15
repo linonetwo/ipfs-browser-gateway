@@ -40,10 +40,9 @@ module.exports = function override(config, env) {
   }
 
   // remove eslint in eslint, we only need it on VSCode
-  config.module.rules.splice(1, 1);
+  config.module.rules.splice(0, 1);
   // rewire service-worker-webpack
   rewireServiceWorkerPlugin(config, 'src/IPFSServiceWorkerGateway/index.js');
-  console.log(config.plugins);
   
 
   return config;
