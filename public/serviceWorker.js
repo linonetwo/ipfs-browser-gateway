@@ -11,9 +11,9 @@ importScripts('./resolver.js');
     those who use module.exports use ./require.js polyfill
 */
 const fileType = require('https://unpkg.com/file-type@7.7.1/index.js');
-const readableStreamNodeToWeb = require('http://localhost:5000/readable-stream-node-to-web.js');
-const mimeTypes = require('http://localhost:5000/mime-types.js');
-const nodeStream = require('http://localhost:5000/stream.js');
+const readableStreamNodeToWeb = require('https://wzrd.in/standalone/readable-stream-node-to-web.js');
+const mimeTypes = require('https://wzrd.in/standalone/mime-types.js');
+const nodeStream = require('https://wzrd.in/standalone/stream.js');
 
 const ipfsRoute = `ipfs`;
 
