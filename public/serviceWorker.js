@@ -13,6 +13,7 @@ importScripts('./resolver.js');
 const fileType = require('https://unpkg.com/file-type@7.7.1/index.js');
 const readableStreamNodeToWeb = require('http://localhost:5000/readable-stream-node-to-web.js');
 const mimeTypes = require('http://localhost:5000/mime-types.js');
+const nodeStream = require('http://localhost:5000/stream.js');
 
 const ipfsRoute = `ipfs`;
 
@@ -111,11 +112,13 @@ async function getFile(path) {
   const ipfs = await getReadyNode();
   return resolveMultihash(ipfs, path)
     .then(data => {
-      const stream = ipfs.files.catReadableStream(data.multihash);
-      console.log(`Getting stream ${stream}`);
+      const ipfsStream = ipfs.files.catReadableStream(data.multihash);
+      const responseStream = new nodeStream.PassThrough()
+      ipfsStream.pipe(responseStream)
+      console.log(`Getting stream ${ipfsStream}`);
 
       return new Promise((resolve, reject) => {
-        stream.once('error', error => {
+        ipfsStream.once('error', error => {
           if (error) {
             console.error(error);
             resolve(new Response(error.toString(), headerError));
@@ -123,14 +126,14 @@ async function getFile(path) {
         });
 
         // TODO: maybe useless? I guess it's for earlier version of ipfs, or for pullStream
-        if (!stream._read) {
-          stream._read = () => {};
-          stream._readableState = {};
+        if (!ipfsStream._read) {
+          ipfsStream._read = () => {};
+          ipfsStream._readableState = {};
         }
 
         // return Response only after first chunk being checked
         let filetypeChecked = false;
-        stream.on('data', chunk => {
+        ipfsStream.on('data', chunk => {
           // check mime on first chunk
           if (filetypeChecked) return;
           filetypeChecked = true;
@@ -140,14 +143,14 @@ async function getFile(path) {
           if (mimeType) {
             console.log(`returning stream with ${mimeType}`);
             resolve(
-              new Response(readableStreamNodeToWeb(stream), {
+              new Response(readableStreamNodeToWeb(responseStream), {
                 ...headerOK,
                 headers: { 'Content-Type': mimeTypes.contentType(mimeType) },
               }),
             );
           } else {
             console.log('return stream without mimeType');
-            resolve(new Response(readableStreamNodeToWeb(stream), headerOK));
+            resolve(new Response(readableStreamNodeToWeb(responseStream), headerOK));
           }
         });
       });
