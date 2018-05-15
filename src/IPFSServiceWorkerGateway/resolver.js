@@ -1,18 +1,18 @@
-/* eslint-disable no-unused-vars */
-/* global importScripts, Cids, Multihashes, IpfsUnixfs, promisify, splitPath, async, renderFolder */
-importScripts('https://unpkg.com/cids@0.5.3/dist/index.min.js');
-importScripts('https://unpkg.com/multihashes@0.4.13/dist/index.min.js');
-importScripts('https://npmcdn.com/ipfs-unixfs@0.1.14/dist/index.min.js');
-importScripts('https://unpkg.com/promisify-es6@1.0.3/index.min.js');
-importScripts('https://wzrd.in/standalone/async.js');
-importScripts('./renderFolder.js');
+import Cids from 'cids';
+import Multihashes from 'multihashes';
+import IpfsUnixfs from 'ipfs-unixfs';
+import promisify from 'promisify-es6';
+import async from 'async';
+
+import { splitPath } from './pathUtil';
+import renderFolder from './renderFolder';
 
 const INDEX_HTML_FILES = ['index.html', 'index.htm', 'index.shtml'];
 function getIndexHtml(links) {
   return links.filter(link => INDEX_HTML_FILES.indexOf(link.name) !== -1);
 }
 
-const resolveDirectory = promisify((ipfs, path, multihash, callback) => {
+export const resolveDirectory = promisify((ipfs, path, multihash, callback) => {
   Multihashes.validate(Multihashes.fromB58String(multihash));
 
   ipfs.object.get(multihash, { enc: 'base58' }, (err, dagNode) => {
@@ -31,7 +31,7 @@ const resolveDirectory = promisify((ipfs, path, multihash, callback) => {
   });
 });
 
-const resolveMultihash = promisify((ipfs, path, callback) => {
+export const resolveMultihash = promisify((ipfs, path, callback) => {
   const parts = splitPath(path);
   const firstMultihash = parts.shift();
   let currentCid;

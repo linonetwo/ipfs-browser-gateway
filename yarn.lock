@@ -1858,7 +1858,7 @@ cids@^0.4.1:
     multicodec "~0.1.7"
     multihashes "~0.4.4"
 
-cids@^0.5.2, cids@~0.5.1, cids@~0.5.2, cids@~0.5.3:
+cids@^0.5.2, cids@^0.5.3, cids@~0.5.1, cids@~0.5.2, cids@~0.5.3:
   version "0.5.3"
   resolved "http://registry.npm.taobao.org/cids/download/cids-0.5.3.tgz#9a25b697eb76faf807afcec35c4ab936edfbd0a4"
   dependencies:
@@ -2764,6 +2764,10 @@ elliptic@^6.0.0, elliptic@^6.2.3:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+emitter-component@^1.1.1:
+  version "1.1.1"
+  resolved "http://registry.npm.taobao.org/emitter-component/download/emitter-component-1.1.1.tgz#065e2dbed6959bf470679edabeaf7981d1003ab6"
+
 emoji-regex@^6.1.0:
   version "6.5.1"
   resolved "http://registry.npm.taobao.org/emoji-regex/download/emoji-regex-6.5.1.tgz#9baea929b155565c11ea41c6626eaa65cef992c2"
@@ -3579,6 +3583,10 @@ file-type@^7.6.0:
   version "7.6.0"
   resolved "http://registry.npm.taobao.org/file-type/download/file-type-7.6.0.tgz#b3dbfc8029148e86f30761b21253562943d21f06"
 
+file-type@^8.0.0:
+  version "8.0.0"
+  resolved "http://registry.npm.taobao.org/file-type/download/file-type-8.0.0.tgz#6e4bccc741187f4113334a4e4a4ef84d54d7cc1e"
+
 filename-regex@^2.0.0:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/filename-regex/download/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
@@ -3597,6 +3605,10 @@ filesize@3.5.11:
 filesize@^3.6.0:
   version "3.6.0"
   resolved "http://registry.npm.taobao.org/filesize/download/filesize-3.6.0.tgz#22d079615624bb6fd3c04026120628a41b3f4efa"
+
+filesize@^3.6.1:
+  version "3.6.1"
+  resolved "http://registry.npm.taobao.org/filesize/download/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
 
 fill-range@^2.1.0:
   version "2.2.3"
@@ -4702,7 +4714,7 @@ ipfs-unixfs-engine@~0.24.4:
     pull-write "^1.1.4"
     sparse-array "^1.3.1"
 
-ipfs-unixfs@~0.1.14:
+ipfs-unixfs@^0.1.14, ipfs-unixfs@~0.1.14:
   version "0.1.14"
   resolved "http://registry.npm.taobao.org/ipfs-unixfs/download/ipfs-unixfs-0.1.14.tgz#256437fcf642d8ab46b5185582ec4f21e908ef37"
   dependencies:
@@ -6797,7 +6809,7 @@ multihashes@^0.3.3:
   dependencies:
     bs58 "^4.0.0"
 
-multihashes@~0.4.12, multihashes@~0.4.13, multihashes@~0.4.4, multihashes@~0.4.9:
+multihashes@^0.4.13, multihashes@~0.4.12, multihashes@~0.4.13, multihashes@~0.4.4, multihashes@~0.4.9:
   version "0.4.13"
   resolved "http://registry.npm.taobao.org/multihashes/download/multihashes-0.4.13.tgz#d10bd71bd51d24aa894e2a6f1457146bb7bac125"
   dependencies:
@@ -8402,6 +8414,10 @@ read-pkg@^3.0.0:
     normalize-package-data "^2.3.2"
     path-type "^3.0.0"
 
+readable-stream-node-to-web@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/readable-stream-node-to-web/download/readable-stream-node-to-web-1.0.1.tgz#8b7614faa1465ebfa0da9b9ca6303fa27073b7cf"
+
 readable-stream@1.0, readable-stream@~1.0.15:
   version "1.0.34"
   resolved "http://registry.npm.taobao.org/readable-stream/download/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
@@ -8921,6 +8937,12 @@ serviceworker-cache-polyfill@^4.0.0:
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/serviceworker-cache-polyfill/download/serviceworker-cache-polyfill-4.0.0.tgz#de19ee73bef21ab3c0740a37b33db62464babdeb"
 
+serviceworker-webpack-plugin@^0.2.3:
+  version "0.2.3"
+  resolved "http://registry.npm.taobao.org/serviceworker-webpack-plugin/download/serviceworker-webpack-plugin-0.2.3.tgz#1873ed6fc83c873ac8240fac443c615d374feeb2"
+  dependencies:
+    minimatch "^3.0.3"
+
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/set-blocking/download/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
@@ -9341,6 +9363,12 @@ stream-to-pull-stream@^1.7.2:
   dependencies:
     looper "^3.0.0"
     pull-stream "^3.2.3"
+
+stream@^0.0.2:
+  version "0.0.2"
+  resolved "http://registry.npm.taobao.org/stream/download/stream-0.0.2.tgz#7f5363f057f6592c5595f00bc80a27f5cec1f0ef"
+  dependencies:
+    emitter-component "^1.1.1"
 
 streamifier@^0.1.1:
   version "0.1.1"

@@ -18,6 +18,8 @@
   },
   "env": {
     "es6": true,
+    "browser": true,
+    "serviceworker": true,
     "node": true,
     "jest/globals": true
   },
