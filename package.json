@@ -29,7 +29,8 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "flow-typed": "^2.4.0",
-    "react-app-rewired": "^1.5.2"
+    "react-app-rewired": "^1.5.2",
+    "serviceworker-webpack-plugin": "^0.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

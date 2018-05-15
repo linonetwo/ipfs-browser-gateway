@@ -8921,6 +8921,12 @@ serviceworker-cache-polyfill@^4.0.0:
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/serviceworker-cache-polyfill/download/serviceworker-cache-polyfill-4.0.0.tgz#de19ee73bef21ab3c0740a37b33db62464babdeb"
 
+serviceworker-webpack-plugin@^0.2.3:
+  version "0.2.3"
+  resolved "http://registry.npm.taobao.org/serviceworker-webpack-plugin/download/serviceworker-webpack-plugin-0.2.3.tgz#1873ed6fc83c873ac8240fac443c615d374feeb2"
+  dependencies:
+    minimatch "^3.0.3"
+
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/set-blocking/download/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"

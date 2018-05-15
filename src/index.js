@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+
+if ('serviceWorker' in navigator) {
+  runtime.register();
+}
