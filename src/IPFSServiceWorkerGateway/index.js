@@ -1,18 +1,16 @@
 /* eslint-disable no-restricted-globals */
 /* global Ipfs */
 
-
 import fileType from 'file-type';
 import readableStreamNodeToWeb from 'readable-stream-node-to-web';
 import mimeTypes from 'mime-types';
 import nodeStream from 'stream';
 
 import { joinURLParts, removeTrailingSlash } from './pathUtil';
-import { resolveDirectory, resolveMultihash} from './resolver';
+import { resolveDirectory, resolveMultihash } from './resolver';
 
 // inject Ipfs to global
 importScripts('https://cdn.jsdelivr.net/npm/ipfs/dist/index.js');
-
 
 const ipfsRoute = `ipfs`;
 
@@ -70,15 +68,11 @@ function handleGatewayResolverError(ipfs, path, err) {
           .then(content => {
             // now content is rendered DOM string
             if (typeof content === 'string') {
-              // no index file found
-              if (!path.endsWith('/')) {
-                // for a directory, if URL doesn't end with a /
-                // append / and redirect permanent to that URL
-                return Response.redirect(`${ipfsRoute}/${path}/`);
-              }
-
-              // send rendered directory list DOM string
-              return new Response(content, headerOK);
+              // no index file found, send rendered directory list DOM string
+              return new Response(content, {
+                ...headerOK,
+                headers: { 'Content-Type': mimeTypes.contentType('.html') },
+              });
             }
             // found index file
             // redirect to URL/<found-index-file>
@@ -111,11 +105,11 @@ async function getFile(path) {
   return resolveMultihash(ipfs, path)
     .then(data => {
       const ipfsStream = ipfs.files.catReadableStream(data.multihash);
-      const responseStream = new nodeStream.PassThrough()
-      ipfsStream.pipe(responseStream)
+      const responseStream = new nodeStream.PassThrough();
+      ipfsStream.pipe(responseStream);
       console.log(`Getting stream ${ipfsStream}`);
 
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         ipfsStream.once('error', error => {
           if (error) {
             console.error(error);

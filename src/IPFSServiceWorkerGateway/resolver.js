@@ -23,7 +23,7 @@ export const resolveDirectory = promisify((ipfs, path, multihash, callback) => {
     // if it is a web site, return index.html
     const indexFiles = getIndexHtml(dagNode.links);
     if (indexFiles.length > 0) {
-      // TODO: add *.css and *.ico to cache
+      // TODO: add *.css and *.ico to cache, since they are already in "indexFiles"
       return callback(null, indexFiles);
     }
 
