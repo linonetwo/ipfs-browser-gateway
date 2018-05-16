@@ -27,6 +27,7 @@
     "comma-dangle": 1,
     "arrow-parens": ["off"],
     "consistent-return": "off",
+    "react/prefer-stateless-function": "off",
     "no-underscore-dangle": "off",
     "no-unused-expressions": "off",
     "flowtype/define-flow-type": 1,
