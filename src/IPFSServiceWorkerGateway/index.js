@@ -103,8 +103,8 @@ async function getFile(path) {
 
   const ipfs = await getReadyNode();
   return resolveMultihash(ipfs, path)
-    .then(data => {
-      const ipfsStream = ipfs.files.catReadableStream(data.multihash);
+    .then(({ multihash }) => {
+      const ipfsStream = ipfs.files.catReadableStream(multihash);
       const responseStream = new nodeStream.PassThrough();
       ipfsStream.pipe(responseStream);
       console.log(`Getting stream ${ipfsStream}`);
