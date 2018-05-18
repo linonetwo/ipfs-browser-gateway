@@ -13,6 +13,7 @@ function getIndexHtml(links) {
 }
 
 export const resolveDirectory = promisify((ipfs, path, multihash, callback) => {
+  // TODO: seems useless, since we have check it in cid = new Cids(Multihashes.fromB58String(result));
   Multihashes.validate(Multihashes.fromB58String(multihash));
 
   ipfs.object.get(multihash, { enc: 'base58' }, (err, dagNode) => {
