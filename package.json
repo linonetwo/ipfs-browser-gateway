@@ -56,7 +56,7 @@
     "start": "rescripts start",
     "build": "rescripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build",
+    "deploy": "gh-pages -d build",
     "test": "rescripts test --env=jsdom"
   },
   "browserslist": {
