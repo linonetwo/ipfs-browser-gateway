@@ -3,13 +3,12 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import Flex from 'styled-flex-component';
-import { Redirect } from 'react-router';
 
 const Container = styled(Flex)`
   overflow: scroll;
 `;
 
-export function Gateway(props: { match: { params: { hash: string } } }) {
+export function GatewayComponent(props: { match: { params: { hash: string } } }) {
   const [hasSWSupport, setSWSupportState] = useState({ support: null, message: '' });
   const {
     match: {
@@ -19,7 +18,7 @@ export function Gateway(props: { match: { params: { hash: string } } }) {
 
   useEffect(() => {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.ready.then(registration => {
+      navigator.serviceWorker.ready.then(() => {
         setSWSupportState({
           support: true,
           message: 'Your browser supprots service worker, and a service worker is active.',
@@ -50,4 +49,4 @@ export function Gateway(props: { match: { params: { hash: string } } }) {
   );
 }
 
-export default withRouter(Gateway);
+export default withRouter(GatewayComponent);
