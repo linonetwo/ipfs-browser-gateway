@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ipfs-browser-gateway/static/js/runtime~main.9569e056.js"
   },
   {
-    "revision": "618769f7f889d23b7b32eb1ee053afb1",
+    "revision": "234b142b1d93e6313a03d51449b2c887",
     "url": "/ipfs-browser-gateway/sw.js"
   }
 ]);
