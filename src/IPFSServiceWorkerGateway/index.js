@@ -7,6 +7,7 @@ import nodeStream from 'stream';
 
 import { joinURLParts, removeTrailingSlash } from './pathUtil';
 import { resolveDirectory, resolveMultihash } from './resolver';
+import packageJSON from '../../package.json'
 
 const IPFS = require('ipfs');
 
@@ -164,7 +165,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-  if (event.request.url.startsWith(`${self.location.origin}/${ipfsRoute}/`)) {
+  if (event.request.url.startsWith(`${packageJSON.homepage}${ipfsRoute}/`)) {
     // 1. we will goto /${ipfsRoute}/multihash so this will be a multihash
     // 2. if returned file of that multihash is a HTML, it will request for other content
     // so this will be content name. We may had cached this file in 1, so subsequent request will hit the cache.
