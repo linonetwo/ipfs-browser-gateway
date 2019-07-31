@@ -5,7 +5,7 @@
   "builds": [{ "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } }],
   "routes": [
     { "src": "/static/(.*)", "headers": { "cache-control": "s-maxage=31536000,immutable" }, "dest": "/static/$1" },
-    { "src": "/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "/ico.png", "dest": "/ico.png" },
     { "src": "/asset-manifest.json", "dest": "/asset-manifest.json" },
     { "src": "/manifest.json", "dest": "/manifest.json" },
     { "src": "/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
