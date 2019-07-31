@@ -164,7 +164,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-  if (event.request.url.startsWith(`${self.location.origin}/${ipfsRoute}`)) {
+  if (event.request.url.startsWith(`${self.location.origin}/${ipfsRoute}/`)) {
     // 1. we will goto /${ipfsRoute}/multihash so this will be a multihash
     // 2. if returned file of that multihash is a HTML, it will request for other content
     // so this will be content name. We may had cached this file in 1, so subsequent request will hit the cache.

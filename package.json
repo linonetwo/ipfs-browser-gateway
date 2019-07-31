@@ -54,7 +54,7 @@
   },
   "scripts": {
     "start": "rescripts start",
-    "build": "rescripts build",
+    "build": "rescripts build && cp ./build/index.html ./build/404.html",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "rescripts test --env=jsdom"

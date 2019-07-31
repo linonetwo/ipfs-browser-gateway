@@ -13,6 +13,7 @@ function rescriptSWPlugin(serviceWorkerEntryPath) {
     const nextConfig = appendWebpackPlugin(
       new ServiceWorkerWebpackPlugin({
         entry: path.join(__dirname, serviceWorkerEntryPath),
+        publicPath: '/ipfs-browser-gateway/'
       }),
       config,
     );

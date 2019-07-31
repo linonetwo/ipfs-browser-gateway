@@ -4,9 +4,15 @@ Given an IPFS multihash, print the content and try to render web page if the con
 
 ## Development
 
-This is a "create-react-app" app, so just:
+This is a "create-react-app" app, so in local development just:
 
-`yarn && yarn start`
+`npm i && npm start`
+
+## Deployment
+
+To deploy this gateway by your self, replace all `http://onetwo.ren/ipfs-browser-gateway/` in this repo with your own website.
+
+You can fork it and deploy it via gh-pages: `npm run deploy`, or deploy it use `now`.
 
 ## Drawback
 
