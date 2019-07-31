@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/ipfs-browser-gateway/static/js/main.d667e299.chunk.js",
-    "main.js.map": "/ipfs-browser-gateway/static/js/main.d667e299.chunk.js.map",
+    "main.js": "/ipfs-browser-gateway/static/js/main.02c44346.chunk.js",
+    "main.js.map": "/ipfs-browser-gateway/static/js/main.02c44346.chunk.js.map",
     "runtime~main.js": "/ipfs-browser-gateway/static/js/runtime~main.9569e056.js",
     "runtime~main.js.map": "/ipfs-browser-gateway/static/js/runtime~main.9569e056.js.map",
     "static/js/2.c3766530.chunk.js": "/ipfs-browser-gateway/static/js/2.c3766530.chunk.js",
     "static/js/2.c3766530.chunk.js.map": "/ipfs-browser-gateway/static/js/2.c3766530.chunk.js.map",
     "index.html": "/ipfs-browser-gateway/index.html",
-    "precache-manifest.b3e68a20095af2812ba06a67fa3443ef.js": "/ipfs-browser-gateway/precache-manifest.b3e68a20095af2812ba06a67fa3443ef.js",
+    "precache-manifest.1a6fc35a82b1dd477cda87448a0a2f62.js": "/ipfs-browser-gateway/precache-manifest.1a6fc35a82b1dd477cda87448a0a2f62.js",
     "service-worker.js": "/ipfs-browser-gateway/service-worker.js",
     "sw.js": "/ipfs-browser-gateway/sw.js",
     "sw.js.map": "/ipfs-browser-gateway/sw.js.map"
