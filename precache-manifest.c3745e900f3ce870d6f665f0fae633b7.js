@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7b246f37c5959a83ee39f31ba7f1a302",
+    "revision": "3c76322fd89d38a4b57d375d52fd59a7",
     "url": "/ipfs-browser-gateway/index.html"
   },
   {
-    "revision": "7200fb51b8fe5d99b0b8",
-    "url": "/ipfs-browser-gateway/static/js/2.3278c127.chunk.js"
+    "revision": "02fe4930cf0db4f13a16",
+    "url": "/ipfs-browser-gateway/static/js/2.7789b198.chunk.js"
   },
   {
     "revision": "2e286ba30c8fb475a679",
