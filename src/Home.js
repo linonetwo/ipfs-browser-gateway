@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Flex from 'styled-flex-component';
+import { withRouter } from 'react-router-dom';
+
+import packageJSON from '../package.json';
+import Gateway from './Gateway';
 
 const Container = styled.article``;
 
@@ -30,8 +34,17 @@ const Example = styled.a`
   margin-top: 20px;
 `;
 
-export default class Home extends Component {
+class HomePage extends Component<{ match: { params: { hash: string } } }> {
   render() {
+    // if we are deployed and in 404.html, though the url is something like https://onetwo.ren/ipfs-browser-gateway/ipfs/QmXD8TDFDn7kfsmCD2eQ3QWuhLpvj7LB5tbzU44iypdmQ9 , but we are still in Home component due to gh-page's single html serving
+    if (window.location.href.startsWith(`${packageJSON.homepage}ipfs/`)) {
+      return (
+        <Container>
+          <Title>IPFS Browser Gateway Playground</Title>
+          <Gateway />
+        </Container>
+      );
+    }
     return (
       <Container>
         <Title>IPFS Browser Gateway Playground</Title>
@@ -53,3 +66,5 @@ export default class Home extends Component {
     );
   }
 }
+
+export default withRouter(HomePage);

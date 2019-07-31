@@ -39,6 +39,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-inline-elements": "^6.22.0",
+    "cross-env": "^5.2.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-flowtype": "^3.12.2",
@@ -53,7 +54,7 @@
     "serviceworker-webpack-plugin": "^1.0.1"
   },
   "scripts": {
-    "start": "rescripts start",
+    "start": "cross-env NODE_ENV=development rescripts start",
     "build": "rescripts build && cp ./build/index.html ./build/404.html",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

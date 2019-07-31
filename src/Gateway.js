@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import Flex from 'styled-flex-component';
 
+import packageJSON from '../package.json';
+
 const Container = styled(Flex)`
   overflow: scroll;
 `;
@@ -12,7 +14,7 @@ export function GatewayComponent(props: { match: { params: { hash: string } } })
   const [hasSWSupport, setSWSupportState] = useState({ support: null, message: '' });
   const {
     match: {
-      params: { hash },
+      params: { hash = window.location.href.split(`${packageJSON.homepage}ipfs/`)[1] },
     },
   } = props;
 
