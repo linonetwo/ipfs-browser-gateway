@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.js": "/ipfs-browser-gateway/static/js/main.0079e1a1.chunk.js",
+    "main.js.map": "/ipfs-browser-gateway/static/js/main.0079e1a1.chunk.js.map",
+    "runtime~main.js": "/ipfs-browser-gateway/static/js/runtime~main.9569e056.js",
+    "runtime~main.js.map": "/ipfs-browser-gateway/static/js/runtime~main.9569e056.js.map",
+    "static/js/2.c909d0a5.chunk.js": "/ipfs-browser-gateway/static/js/2.c909d0a5.chunk.js",
+    "static/js/2.c909d0a5.chunk.js.map": "/ipfs-browser-gateway/static/js/2.c909d0a5.chunk.js.map",
+    "index.html": "/ipfs-browser-gateway/index.html",
+    "precache-manifest.4e20c6585721f0fc667041eca257eabc.js": "/ipfs-browser-gateway/precache-manifest.4e20c6585721f0fc667041eca257eabc.js",
+    "service-worker.js": "/ipfs-browser-gateway/service-worker.js",
+    "sw.js": "/ipfs-browser-gateway/sw.js",
+    "sw.js.map": "/ipfs-browser-gateway/sw.js.map"
+  }
+}
