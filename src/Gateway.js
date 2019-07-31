@@ -1,21 +1,53 @@
-import React, { Component } from 'react';
+// @flow
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import Flex from 'styled-flex-component';
+import { Redirect } from 'react-router';
 
 const Container = styled(Flex)`
   overflow: scroll;
 `;
 
-class Gateway extends Component {
+export function Gateway(props: { match: { params: { hash: string } } }) {
+  const [hasSWSupport, setSWSupportState] = useState({ support: null, message: '' });
+  const {
+    match: {
+      params: { hash },
+    },
+  } = props;
 
-  render() {
-    return (
-      <Container center column>
-        {this.props.match.params.hash}
-      </Container>
-    );
-  }
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(registration => {
+        setSWSupportState({
+          support: true,
+          message: 'Your browser supprots service worker, and a service worker is active.',
+        });
+      });
+    } else {
+      setSWSupportState({ support: true, message: 'Service workers are not supported in your browser.' });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (hasSWSupport.support === true) {
+      window.location.reload();
+    }
+  }, [hasSWSupport.support]);
+  return (
+    <Container center column>
+      {hasSWSupport.support === null && <p>Checking IPFS Gateway support</p>}
+      {hasSWSupport.support === true && (
+        <>
+          <p key="0">{hasSWSupport.message}</p>
+          <p key="1">Usually it will take effect after refreshing. Refreshing for you now:</p>
+          <p key="2">{`/ipfs/${hash}`}</p>
+        </>
+      )}
+      {hasSWSupport.support === false && hasSWSupport.message}
+    </Container>
+  );
 }
 
 export default withRouter(Gateway);
