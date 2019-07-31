@@ -19,7 +19,6 @@ This is a "create-react-app" app, so just:
 
 - Refactor
 - Cache
-- PR to [ipfs-shipyard/service-worker-gateway](https://github.com/ipfs-shipyard/service-worker-gateway)
 
 ## Reference
 
