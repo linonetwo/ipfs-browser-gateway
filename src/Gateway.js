@@ -27,7 +27,7 @@ export function GatewayComponent(props: { match: { params: { hash: string } } })
         });
       });
     } else {
-      setSWSupportState({ support: true, message: 'Service workers are not supported in your browser.' });
+      setSWSupportState({ support: false, message: 'Service workers are not supported in your browser.' });
     }
   }, []);
 
