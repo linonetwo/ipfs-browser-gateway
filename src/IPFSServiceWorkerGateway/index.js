@@ -1,5 +1,4 @@
 /* eslint-disable no-restricted-globals */
-/* global Ipfs */
 
 import fileType from 'file-type';
 import readableStreamNodeToWeb from 'readable-stream-node-to-web';
@@ -9,17 +8,16 @@ import nodeStream from 'stream';
 import { joinURLParts, removeTrailingSlash } from './pathUtil';
 import { resolveDirectory, resolveMultihash } from './resolver';
 
-// inject Ipfs to global
-importScripts('https://cdn.jsdelivr.net/npm/ipfs/dist/index.js');
+const IPFS = require('ipfs');
 
 const ipfsRoute = `ipfs`;
 
 let ipfsNode = null;
 
 /** create an in memory node (side effect) */
-function initIPFS() {
+async function initIPFS() {
   const repoPath = `ipfs-${Math.random()}`;
-  ipfsNode = new Ipfs({
+  ipfsNode = new IPFS({
     repo: repoPath,
     config: {
       Addresses: {
@@ -27,6 +25,18 @@ function initIPFS() {
         Swarm: ['/ip4/0.0.0.0/tcp/0'],
         Gateway: '/ip4/0.0.0.0/tcp/0',
       },
+      // as https://github.com/ipfs/js-ipfs/blob/master/src/core/runtime/config-browser.js
+      // add your own to speed up
+      Bootstrap: [
+        '/dns4/ams-1.bootstrap.libp2p.io/tcp/443/wss/ipfs/QmSoLer265NRgSp2LA3dPaeykiS1J6DifTC88f5uVQKNAd',
+        '/dns4/lon-1.bootstrap.libp2p.io/tcp/443/wss/ipfs/QmSoLMeWqB7YGVLJN3pNLQpmmEk35v6wYtsMGLzSr5QBU3',
+        '/dns4/sfo-3.bootstrap.libp2p.io/tcp/443/wss/ipfs/QmSoLPppuBtQSGwKDZT2M73ULpjvfd3aZ6ha4oFGL1KrGM',
+        '/dns4/sgp-1.bootstrap.libp2p.io/tcp/443/wss/ipfs/QmSoLSafTMBsPKadTEgaXctDQVcqN88CNLHXMkTNwMKPnu',
+        '/dns4/nyc-1.bootstrap.libp2p.io/tcp/443/wss/ipfs/QmSoLueR4xBeUbY9WZ9xGUUxunbKWcrNFTDAadQJmocnWm',
+        '/dns4/nyc-2.bootstrap.libp2p.io/tcp/443/wss/ipfs/QmSoLV4Bbm51jM9C4gDYZQ9Cy3U6aXMJDAbzgu2fzaDs64',
+        '/dns4/node0.preload.ipfs.io/tcp/443/wss/ipfs/QmZMxNdpMkewiVZLMRxaNxUeZpDUb34pWjZ1kZvsd16Zic',
+        '/dns4/node1.preload.ipfs.io/tcp/443/wss/ipfs/Qmbut9Ywz9YEDrz8ySBSgWyJk41Uvm2QJPhwDJzJyGFsD6',
+      ],
     },
   });
 }
@@ -42,6 +52,7 @@ function getReadyNode() {
       resolve(ipfsNode);
     } else {
       ipfsNode.on('ready', () => {
+        console.log("IPFS node inside IPFS Gateway Service Worker is ready.");
         if (ipfsNode.isOnline()) {
           resolve(ipfsNode);
         }
@@ -104,11 +115,9 @@ async function getFile(path) {
   const ipfs = await getReadyNode();
   return resolveMultihash(ipfs, path)
     .then(({ multihash }) => {
-      const ipfsStream = ipfs.files.catReadableStream(multihash);
-      const responseStream = new nodeStream.PassThrough();
+      const ipfsStream = ipfs.catReadableStream(multihash);
+      const responseStream = new nodeStream.PassThrough({ highWaterMark: 1 });
       ipfsStream.pipe(responseStream);
-      console.log(`Getting stream ${ipfsStream}`);
-
       return new Promise(resolve => {
         ipfsStream.once('error', error => {
           if (error) {
@@ -133,7 +142,6 @@ async function getFile(path) {
           const fileSignature = fileType(chunk);
           const mimeType = mimeTypes.lookup(fileSignature ? fileSignature.ext : null);
           if (mimeType) {
-            console.log(`returning stream with ${mimeType}`);
             resolve(
               new Response(readableStreamNodeToWeb(responseStream), {
                 ...headerOK,
@@ -141,7 +149,6 @@ async function getFile(path) {
               }),
             );
           } else {
-            console.log('return stream without mimeType');
             resolve(new Response(readableStreamNodeToWeb(responseStream), headerOK));
           }
         });
@@ -152,7 +159,7 @@ async function getFile(path) {
 
 self.addEventListener('install', event => {
   // kick previous sw after install
-  console.log('Service worker is installing.');
+  console.log('IPFS Gateway Service Worker is installing.');
   event.waitUntil(self.skipWaiting());
 });
 
@@ -162,7 +169,7 @@ self.addEventListener('fetch', event => {
     // 2. if returned file of that multihash is a HTML, it will request for other content
     // so this will be content name. We may had cached this file in 1, so subsequent request will hit the cache.
     const multihashOrContentName = event.request.url.split(`/${ipfsRoute}/`)[1];
-    console.log(`Service worker getting ${multihashOrContentName}`);
+    console.log(`IPFS Gateway Service Worker getting ${multihashOrContentName}`);
     event.respondWith(getFile(multihashOrContentName));
   }
 });

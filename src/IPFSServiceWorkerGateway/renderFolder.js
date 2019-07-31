@@ -18,8 +18,8 @@ function buildFilesList(path, links) {
   const rows = links.map(link => {
     let row = [
       `<div class="ipfs-icon ipfs-_blank">&nbsp;</div>`,
-      `<a href="${joinURLParts(path, link.name)}">${link.name}</a>`,
-      filesize(link.size),
+      `<a href="${joinURLParts(path, link.Name)}">${link.Name}</a>`,
+      filesize(link.Tsize),
     ];
 
     row = row.map(cell => `<td>${cell}</td>`).join('');
