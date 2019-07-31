@@ -1,13 +1,15 @@
 {
   "name": "ipfs-browser-gateway",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "http://onetwo.ren/ipfs-browser-gateway/",
   "dependencies": {
     "@rescripts/rescript-env": "0.0.10",
     "async": "^3.1.0",
     "cids": "^0.7.1",
     "file-type": "^12.1.0",
     "filesize": "^4.1.2",
+    "gh-pages": "^2.0.1",
     "history": "^4.9.0",
     "ipfs": "^0.36.4",
     "ipfs-unixfs": "^0.1.16",
@@ -53,6 +55,8 @@
   "scripts": {
     "start": "rescripts start",
     "build": "rescripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "test": "rescripts test --env=jsdom"
   },
   "browserslist": {
